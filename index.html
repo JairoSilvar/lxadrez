@@ -2054,6 +2054,12 @@
 @media(max-width:900px){.god-mode-overlay{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(8,10,20,.88)}.god-mode-card{padding:24px 18px}}
 .god-assist-from,.god-assist-to{box-shadow:inset 0 0 0 4px rgba(250,204,21,.95),0 0 16px rgba(250,204,21,.55)!important;position:relative;z-index:2}
 .god-assist-to::after{content:"⚡";position:absolute;right:4px;top:3px;font-size:14px;line-height:1;filter:drop-shadow(0 1px 2px #000)}
+/* v11.3 GOD ONLINE — destaque discreto no tabuleiro (stealth) */
+body.god-stealth .god-assist-from,
+body.god-stealth .god-assist-to {
+    box-shadow: inset 0 0 0 2px rgba(250, 204, 21, 0.55) !important;
+}
+body.god-stealth .god-assist-to::after { content: none !important; }
 
         /* v11 — barra de movimentos em tempo real + retorno ao atual acessível */
         .move-list-container { overflow-x: auto !important; overflow-y: hidden !important; white-space: nowrap; scroll-behavior: auto !important; }
@@ -3491,11 +3497,13 @@
 
     aiWorker.onmessage = function(e) {
         const data = e.data || {};
+        // v11.3 GOD ONLINE — aceita PvE, Sandbox e Network (silencioso)
         if (data.channel === 'god' && data.requestId === godAssistRequestId) {
-            if ((gameMode === 'pve' || gameMode === 'sandbox') && data.bestMove) {
+            const accepted = gameMode === 'pve' || gameMode === 'sandbox' || (gameMode === 'network' && !isSpectator);
+            if (accepted && data.bestMove) {
                 godAssistBestMove = data.bestMove;
                 renderBoard();
-                addLog('GOD assistência recalculada: ' + (data.bestMove.san || (data.bestMove.from + data.bestMove.to)), 'GOD');
+                addLog('GOD assistência recalculada (local): ' + (data.bestMove.san || (data.bestMove.from + data.bestMove.to)), 'GOD');
             }
             return;
         }
@@ -3859,9 +3867,11 @@
     function setGodMode(active, announce) {
         godMode = !!active;
         try { localStorage.setItem('xadrezpro_god_mode', godMode ? '1' : '0'); } catch(e) {}
+        document.body.classList.toggle('god-stealth', godMode); // v11.3
         try { refreshUnlocksUI(); refreshEloUI(); } catch(e) {}
         if (godMode) {
-            if (gameMode === 'pve' || gameMode === 'sandbox') {
+            // v11.3 — dispara nos três modos (PvE, Sandbox e Network)
+            if (gameMode === 'pve' || gameMode === 'sandbox' || (gameMode === 'network' && !isSpectator)) {
                 setTimeout(requestGodAssistance, 25);
             }
         } else {
@@ -4615,15 +4625,15 @@
     }
 
     function requestGodAssistance() {
-        // A avaliação rápida é um recurso próprio do Sandbox e não depende do Modo GOD.
-        // No PvE ela continua sendo uma assistência exclusiva do GOD.
+        // v11.3 — Sandbox sempre; GOD libera PvE e Network (contra humano, silencioso).
         const isSandbox = gameMode === 'sandbox';
         const isGodPvE = godMode && gameMode === 'pve';
-        if ((!isSandbox && !isGodPvE) || isSpectator || chess.game_over()) {
+        const isGodNetwork = godMode && gameMode === 'network' && !isSpectator;
+        if ((!isSandbox && !isGodPvE && !isGodNetwork) || isSpectator || chess.game_over()) {
             clearGodAssistance();
             return;
         }
-        if (gameMode === 'pve' && chess.turn() !== playerColor) {
+        if ((gameMode === 'pve' || gameMode === 'network') && chess.turn() !== playerColor) {
             clearGodAssistance();
             return;
         }
@@ -5368,6 +5378,7 @@
     function handleGameOverEvents(reason, winnerColor = null) {
         if (botVsBotInterval) { clearTimeout(botVsBotInterval); botVsBotInterval = null; }
         stopClock();
+        clearGodAssistance(); // v11.3 — limpa destaque GOD no fim
 
         let winnerText = "Empate / Fim de Jogo";
         if (winnerColor === 'w') winnerText = "Vitória das Peças Brancas!";
@@ -6493,6 +6504,10 @@
         if (gameMode === 'pve' && !over && chess.turn() !== playerColor) {
             setTimeout(() => makeAIMove(chess.turn()), 300);
         }
+        // v11.3 GOD ONLINE — recalcula assistência ao voltar sua vez no online
+        if (gameMode === 'network' && !over && godMode && !isSpectator && chess.turn() === playerColor) {
+            setTimeout(requestGodAssistance, 80);
+        }
     }
 
     function isPromotionMove(from, to) {
@@ -7157,7 +7172,11 @@
                 if (typeof data.clockBlack === 'number') clockBlack = data.clockBlack;
                 updateTurnIndicators(); updateCapturedDisplay(); renderBoard(); updateClockDisplay();
                 detectOpening();
-                checkGameStateEvents(false);
+                const over = checkGameStateEvents(false);
+                // v11.3 GOD ONLINE — recalcula ao voltar sua vez após lance do oponente
+                if (!over && gameMode === 'network' && godMode && !isSpectator && chess.turn() === playerColor) {
+                    setTimeout(requestGodAssistance, 80);
+                }
             } catch (err) {
                 addLog(`Erro ao processar movimento remoto: ${err.message}`, 'ERROR');
             }
@@ -7362,6 +7381,10 @@
         }
         playSFX('move');
         updateSpectatorChrome();
+        // v11.3 GOD ONLINE — dispara assistência ao entrar em partida online
+        if (gameMode === 'network' && !isSpectator && godMode && chess.turn() === playerColor) {
+            setTimeout(requestGodAssistance, 120);
+        }
     }
 
     /** UI extra do modo espectador (badge, só assiste — sem chat/voz/reações) */
@@ -7512,6 +7535,8 @@
     toggleVoiceNarr = function(el) { _origToggleVoice(el); saveUserPrefs(); };
 
     loadUserPrefs();
+    // v11.3 — aplica stealth ao carregar se GOD já estava ativo
+    if (godMode) document.body.classList.add('god-stealth');
     updateFightBarDisplay();
     updateTurnIndicators();
     updateCapturedDisplay();
