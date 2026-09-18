@@ -1,8 +1,8 @@
-/* Xadrez Pro Service Worker v7.3 — offline shell + assets */
-const CACHE = 'xadrezpro-v732';
+/* Xadrez Pro Service Worker v10.1 — offline shell + assets */
+const CACHE = 'xadrezpro-v101';
 const PRECACHE = [
   './',
-  './XadrezPro_v7.3.2.html',
+  './index.html',
   'https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js',
   'https://upload.wikimedia.org/wikipedia/commons/4/45/Chess_plt45.svg',

@@ -1,16 +1,20 @@
 
 <!DOCTYPE html>
+<!-- Xadrez Pro v13.0.2 FINAL — consolidacao de todos os recursos da linha 12.x.
+     Preserva: IA/Worker, PvE/PvP, P2P/salas/espectadores/chat/voz/reacoes, Sandbox,
+     Centro de Treino, Tutorial, FEN, Bot-vs-Bot, GOD, temas, skins, historico/PGN,
+     relogios, radio e compatibilidade responsiva. -->
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Xadrez Pro - v11.2</title>
+    <title>Xadrez Pro - v13.0.2 · Tutorial Unificado</title>
     <meta name="theme-color" content="#0284c7">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Xadrez Pro">
-    <meta name="description" content="Xadrez Pro — xadrez P2P, IA offline e rádio em tempo real">
+    <meta name="description" content="Xadrez Pro v13.0.2 — xadrez P2P, IA offline e rádio em tempo real">
     <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg">
     <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg">
     <link rel="manifest" id="pwa-manifest-link">
@@ -51,6 +55,51 @@
         body.theme-toquio, body.room-toquio { --bg-main: #050508; --bg-gradient: radial-gradient(circle at center, #120a2a 0%, #050508 100%); --panel-bg: rgba(18, 14, 38, 0.98); --panel-border: #f43f5e; --text-main: #00f0ff; --text-muted: #a855f7; --board-border: #00f0ff; --light-square: #2a1b4e; --dark-square: #120a2a; --chat-bg: rgba(11, 7, 26, 0.6); --chat-input-bg: #0b071a; --chat-msg-bg: #1a103c; --btn-bg: #2d1b4e; --btn-hover: #3b2363; --modal-bg: #120e26; --modal-border: #00f0ff; --modal-text: #00f0ff; --hint-dot-color: #a3e635; --candy-w-bg: #00f0ff; --candy-b-bg: #f43f5e; --neon-glow-btn: 0 0 8px rgba(163, 230, 53, 0.4); }
         body.theme-londres, body.room-londres { --bg-main: #062314; --bg-gradient: radial-gradient(circle at center, #0c3b22 0%, #062314 100%); --panel-bg: rgba(12, 59, 34, 0.98); --panel-border: #22c55e; --text-main: #d1fae5; --text-muted: #6ee7b7; --board-border: #10b981; --light-square: #166534; --dark-square: #064e3b; --chat-bg: rgba(5, 35, 20, 0.6); --chat-input-bg: #052314; --chat-msg-bg: #0f4c28; --btn-bg: #14532d; --btn-hover: #166534; --modal-bg: #0c3b22; --modal-border: #22c55e; --modal-text: #d1fae5; --hint-dot-color: #a3e635; --candy-w-bg: #22c55e; --candy-b-bg: #10b981; --neon-glow-btn: 0 0 8px rgba(163, 230, 53, 0.4); }
         body.theme-grandmaster { --bg-main: #1a1025; --bg-gradient: radial-gradient(circle at center, #2d1b4e 0%, #0f0a1a 100%); --panel-bg: rgba(30, 20, 50, 0.98); --panel-border: #eab308; --text-main: #fef3c7; --text-muted: #fbbf24; --board-border: #f59e0b; --light-square: #3b2760; --dark-square: #1e1035; --chat-bg: rgba(15, 10, 30, 0.7); --chat-input-bg: #120a22; --chat-msg-bg: #2a1848; --btn-bg: #3b2760; --btn-hover: #4c1d95; --modal-bg: #1e1035; --modal-border: #eab308; --modal-text: #fef3c7; --hint-dot-color: #fbbf24; --candy-w-bg: #eab308; --candy-b-bg: #a855f7; --neon-glow-btn: 0 0 12px rgba(234, 179, 8, 0.5); --turn-active-color: #eab308; }
+        /* v11.5 — ambientes completos: Matrix, Cyberpunk, Toxic e Esmeralda.
+           Cada ambiente controla UI + tabuleiro + contraste base + brilho, sem remover os temas antigos. */
+        body.theme-matrix, body.room-matrix {
+            --bg-main:#020403; --bg-gradient:radial-gradient(circle at 50% 35%,#07351d 0%,#020403 58%,#000 100%);
+            --panel-bg:rgba(5,18,10,.97); --panel-border:#0b6b3a; --text-main:#d8ffe5; --text-muted:#6bbf8a;
+            --board-border:#00ff66; --light-square:#123b25; --dark-square:#061b10; --chat-bg:rgba(3,14,8,.9);
+            --chat-input-bg:#031009; --chat-msg-bg:#092518; --btn-bg:#07351d; --btn-hover:#0b6b3a;
+            --modal-bg:#04140b; --modal-border:#00ff66; --modal-text:#d8ffe5; --hint-dot-color:#b8ff00;
+            --candy-w-bg:#00ff66; --candy-b-bg:#0b6b3a; --neon-glow-btn:0 0 12px rgba(0,255,102,.48); --turn-active-color:#b8ff00;
+        }
+        body.theme-cyberpunk, body.room-cyberpunk {
+            --bg-main:#050508; --bg-gradient:radial-gradient(circle at 50% 35%,#172b42 0%,#090a12 52%,#020205 100%);
+            --panel-bg:rgba(8,13,24,.97); --panel-border:#00e5ff; --text-main:#e6fbff; --text-muted:#79c8d8;
+            --board-border:#00e5ff; --light-square:#18334b; --dark-square:#081522; --chat-bg:rgba(5,10,18,.9);
+            --chat-input-bg:#050a12; --chat-msg-bg:#0d2030; --btn-bg:#12304a; --btn-hover:#164a68;
+            --modal-bg:#081321; --modal-border:#00e5ff; --modal-text:#e6fbff; --hint-dot-color:#ffea00;
+            --candy-w-bg:#00e5ff; --candy-b-bg:#ffea00; --neon-glow-btn:0 0 13px rgba(0,229,255,.5); --turn-active-color:#ffea00;
+        }
+        body.theme-toxic, body.room-toxic {
+            --bg-main:#090b07; --bg-gradient:radial-gradient(circle at 50% 35%,#202b08 0%,#0b0d08 52%,#050505 100%);
+            --panel-bg:rgba(14,17,9,.97); --panel-border:#84cc16; --text-main:#f4ffe2; --text-muted:#a6c77a;
+            --board-border:#84cc16; --light-square:#283b12; --dark-square:#111b09; --chat-bg:rgba(10,14,7,.92);
+            --chat-input-bg:#080c05; --chat-msg-bg:#18250b; --btn-bg:#24350d; --btn-hover:#385414;
+            --modal-bg:#101707; --modal-border:#84cc16; --modal-text:#f4ffe2; --hint-dot-color:#d946ef;
+            --candy-w-bg:#84cc16; --candy-b-bg:#9333ea; --neon-glow-btn:0 0 12px rgba(132,204,22,.48); --turn-active-color:#d946ef;
+        }
+        body.theme-esmeralda, body.room-esmeralda {
+            --bg-main:#03130d; --bg-gradient:radial-gradient(circle at 50% 35%,#075e42 0%,#032217 48%,#010906 100%);
+            --panel-bg:rgba(4,28,19,.97); --panel-border:#10b981; --text-main:#dcfff0; --text-muted:#78cda9;
+            --board-border:#34d399; --light-square:#b7f7d8; --dark-square:#086b4c; --chat-bg:rgba(2,20,13,.9);
+            --chat-input-bg:#02150d; --chat-msg-bg:#083d2a; --btn-bg:#075c40; --btn-hover:#0a7652;
+            --modal-bg:#05271a; --modal-border:#10b981; --modal-text:#dcfff0; --hint-dot-color:#d9f99d;
+            --candy-w-bg:#34d399; --candy-b-bg:#065f46; --neon-glow-btn:0 0 11px rgba(16,185,129,.45); --turn-active-color:#a7f3d0;
+        }
+        /* Matrix: textura leve, sem partículas pesadas, para manter desempenho em aparelhos antigos. */
+        body.theme-matrix::before {
+            content:""; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.11;
+            background-image:linear-gradient(rgba(0,255,102,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,102,.08) 1px,transparent 1px);
+            background-size:28px 28px;
+        }
+        body.theme-matrix .panel, body.theme-matrix .card, body.theme-cyberpunk .panel, body.theme-cyberpunk .card,
+        body.theme-toxic .panel, body.theme-toxic .card, body.theme-esmeralda .panel, body.theme-esmeralda .card { border-color:var(--panel-border); }
+        body.theme-matrix .action-btn, body.theme-cyberpunk .action-btn, body.theme-toxic .action-btn, body.theme-esmeralda .action-btn { text-shadow:0 0 6px currentColor; }
+        body.theme-matrix .board, body.theme-cyberpunk .board, body.theme-toxic .board, body.theme-esmeralda .board { box-shadow:0 0 0 2px var(--board-border),0 0 22px rgba(0,0,0,.32); }
+
         /* v9.4 — preset Arena (torneio clássico) */
         body.theme-arena {
             --bg-main: #1c1917;
@@ -1296,6 +1345,23 @@
         .tutorial-step h3 { font-size: 12px; margin-bottom: 4px; color: var(--board-border); }
         .tutorial-step p { font-size: 11px; line-height: 1.45; color: var(--text-main); }
         .tutorial-nav { display: flex; gap: 8px; justify-content: space-between; margin-top: 10px; flex-wrap: wrap; }
+        .tutorial-tools { margin-top: 10px; padding: 10px; border: 1px solid var(--panel-border); border-radius: 12px; background: var(--chat-bg); }
+        .tutorial-tools-title { font-size: 10px; font-weight: 900; color: var(--board-border); margin-bottom: 7px; text-align: center; }
+        .tutorial-tools-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+        .tutorial-tool-btn { min-height: 64px; border: 1px solid var(--panel-border); border-radius: 10px; background: var(--btn-bg); color: var(--text-main); cursor: pointer; padding: 7px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; }
+        .tutorial-tool-btn:hover { transform: translateY(-1px); border-color: var(--board-border); }
+        /* Sandbox do Tutorial: botão único e neutro (sem o antigo azul duplicado). */
+        .tutorial-tool-btn.sandbox-tool { background: var(--btn-bg); color: var(--text-main); border-color: var(--panel-border); }
+        .tutorial-tool-btn.sandbox-tool:hover { background: var(--btn-bg); color: var(--text-main); }
+        .tutorial-tool-btn.sandbox-tool, .tutorial-tool-btn.sandbox-tool:active, .tutorial-tool-btn.sandbox-tool:focus { background: var(--btn-bg) !important; color: var(--text-main) !important; border-color: var(--panel-border) !important; box-shadow: none !important; }
+        .tutorial-tool-btn span { font-size: 18px; line-height: 1; }
+        .tutorial-tool-btn b { font-size: 10px; }
+        .tutorial-tool-btn small { font-size: 8px; color: var(--text-muted); text-align: center; line-height: 1.2; }
+        .xp-train-hud { display:none; width:100%; box-sizing:border-box; margin:8px 0; padding:9px; border:1px solid var(--panel-border); border-radius:12px; background:var(--chat-bg); color:var(--text-main); box-shadow:0 4px 14px rgba(0,0,0,.14); }
+        .xp-train-hud-status { min-height:20px; font-size:11px; font-weight:800; text-align:left; margin-bottom:7px; }
+        .xp-train-hud-actions { display:flex; gap:6px; justify-content:flex-start; flex-wrap:wrap; } .xp-train-hud-actions .action-btn:disabled { opacity:.45; cursor:not-allowed; }
+        @media(max-width:600px){ .tutorial-tools-grid { grid-template-columns:1fr; } .tutorial-tool-btn { min-height:54px; display:grid; grid-template-columns:28px 1fr; grid-template-rows:auto auto; text-align:left; } .tutorial-tool-btn span { grid-row:1 / span 2; align-self:center; justify-self:center; } .tutorial-tool-btn b,.tutorial-tool-btn small { text-align:left; } }
+
         .tutorial-hero {
             display: flex; align-items: center; justify-content: center; gap: 10px;
             margin: 8px 0 12px; flex-wrap: wrap;
@@ -1314,11 +1380,6 @@
         .tutorial-tip {
             background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.35);
             border-radius: 10px; padding: 8px 10px; font-size: 11px; text-align: left; margin-top: 8px;
-        }
-        .tutorial-practice-btn {
-            margin-top: 10px; width: 100%; padding: 10px; font-size: 11px; font-weight: 800;
-            border: none; border-radius: 10px; cursor: pointer; color: #fff;
-            background: linear-gradient(135deg, #7c3aed, #4f46e5);
         }
         .tutorial-move-demo {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
@@ -1432,6 +1493,16 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
+<style id="xp-final-css">
+.xp-ai-progress{position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:99999;display:none;min-width:220px;max-width:82vw;padding:8px 12px;border:1px solid var(--board-border);border-radius:12px;background:rgba(0,0,0,.82);color:var(--text-main);font:600 12px ui-monospace,monospace;box-shadow:0 0 18px rgba(0,0,0,.35);text-align:center;pointer-events:none}
+@media(max-width:600px){.xp-ai-progress{top:8px;font-size:11px;min-width:180px}}
+</style>
+
+
+<style id="xp-training-css-v122">
+.xp-train-card{padding:10px;border-radius:14px}.xp-train-title{font-size:15px}.xp-train-board{width:min(88vw,62vh)}}
+</style>
+
 </head>
 <body class="theme-claro pieces-blue-pink">
     <button id="restore-btn" onclick="togglePanel()">⚙️ MENU</button>
@@ -1471,6 +1542,10 @@
                 <button class="action-btn" style="padding: 6px; font-size: 9px;" onclick="applyThemePreset('toquio')">⚡ Tóquio (Cyber)</button>
                 <button class="action-btn" style="padding: 6px; font-size: 9px;" onclick="applyThemePreset('londres')">🌲 Londres</button>
                 <button class="action-btn" style="padding: 6px; font-size: 9px; grid-column:1/-1; background:linear-gradient(135deg,#44403c,#78716c); color:#fafaf9;" onclick="applyThemePreset('arena')">🏟️ Arena (Torneio clássico)</button>
+                <button class="action-btn" style="padding:6px; font-size:9px; background:linear-gradient(135deg,#020403,#0b6b3a); color:#d8ffe5; border-color:#00ff66;" onclick="applyThemePreset('matrix')">🟩 Matrix — Sistema</button>
+                <button class="action-btn" style="padding:6px; font-size:9px; background:linear-gradient(135deg,#071321,#164a68); color:#e6fbff; border-color:#00e5ff;" onclick="applyThemePreset('cyberpunk')">⚡ Cyberpunk — Neon</button>
+                <button class="action-btn" style="padding:6px; font-size:9px; background:linear-gradient(135deg,#101707,#385414); color:#f4ffe2; border-color:#84cc16;" onclick="applyThemePreset('toxic')">☣️ Toxic — Contaminação</button>
+                <button class="action-btn" style="padding:6px; font-size:9px; background:linear-gradient(135deg,#032217,#0a7652); color:#dcfff0; border-color:#34d399;" onclick="applyThemePreset('esmeralda')">💚 Esmeralda — Floresta</button>
                 <button class="action-btn" id="btnThemeGrandmaster" style="padding: 6px; font-size: 9px; opacity: 0.5; grid-column:1/-1;" onclick="trySetGrandmasterTheme()" title="Desbloqueie com Elo ≥ 1500">👑 Grandmaster (bloqueado)</button>
                 <label style="grid-column:1/-1; font-size:9.5px; font-weight:bold; display:flex; align-items:center; justify-content:space-between; background:var(--chat-bg); padding:5px; border-radius:6px; border:1px solid var(--panel-border);">
                     <span>♿ Padrões (daltonismo)</span>
@@ -1663,7 +1738,7 @@
     <div id="menu-screen">
         <div class="hero-box">
             <h1>♟️ Xadrez Pro</h1>
-            <p>Estratégia P2P · IA offline · v11.2</p>
+            <p>Estratégia P2P · IA offline · v13.0.0</p>
         </div>
         <div class="menu-dashboard">
             <!-- ===== COLUNA ESQUERDA (perfil + secundários) ===== -->
@@ -1748,10 +1823,6 @@
                         <span class="mode-title">🤖 Bot vs Bot</span>
                         <span class="mode-sub">Assista mestres</span>
                     </button>
-                    <button type="button" class="mode-card mode-sandbox" onclick="startSandboxMode()">
-                        <span class="mode-title">🧪 Sandbox</span>
-                        <span class="mode-sub">Analisar posição</span>
-                    </button>
                     <button type="button" class="mode-card mode-tutorial" onclick="openTutorial()">
                         <span class="mode-title">📖 Tutorial</span>
                         <span class="mode-sub">Aprenda as regras</span>
@@ -1827,10 +1898,18 @@
                 <button class="close-modal-btn" onclick="closeTutorial()" title="Fechar">✕</button>
             </div>
             <div id="tutorialBody"></div>
-            <div class="tutorial-nav">
+            <div class="tutorial-nav" style="flex-wrap:wrap;">
                 <button class="action-btn" id="tutorialPrev" onclick="tutorialStep(-1)" style="padding:8px 12px;font-size:11px;">← Anterior</button>
                 <span id="tutorialPager" style="font-size:11px;color:var(--text-muted);align-self:center;"></span>
                 <button class="action-btn" id="tutorialNext" onclick="tutorialStep(1)" style="padding:8px 12px;font-size:11px;background:var(--modal-border);color:#fff;">Próximo →</button>
+            </div>
+            <div class="tutorial-tools" aria-label="Ferramentas de aprendizado">
+                <div class="tutorial-tools-title">🧰 Aprender, praticar e analisar</div>
+                <div class="tutorial-tools-grid">
+                    <button type="button" class="tutorial-tool-btn" onclick="xpOpenTraining()"><span>🧩</span><b>Treino</b><small>Desafios no tabuleiro principal</small></button>
+                    <button type="button" class="tutorial-tool-btn" onclick="xpImportFEN()"><span>♟️</span><b>FEN</b><small>Carregar e analisar uma posição</small></button>
+                    <button type="button" class="tutorial-tool-btn sandbox-tool" onclick="startSandboxFromTutorial()"><span>🧪</span><b>Sandbox</b><small>Laboratório livre com IA</small></button>
+                </div>
             </div>
         </div>
     </div>
@@ -2052,14 +2131,26 @@
 .god-mode-icon{font-size:42px;line-height:1;margin-bottom:12px}.god-mode-card>div:nth-child(2){font-size:clamp(24px,5vw,42px);letter-spacing:.04em;color:#fde68a}.god-mode-card>div:nth-child(3){margin-top:10px;font-size:14px;color:#e5e7eb;font-weight:700}
 @keyframes godFadeIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
 @media(max-width:900px){.god-mode-overlay{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(8,10,20,.88)}.god-mode-card{padding:24px 18px}}
-.god-assist-from,.god-assist-to{box-shadow:inset 0 0 0 4px rgba(250,204,21,.95),0 0 16px rgba(250,204,21,.55)!important;position:relative;z-index:2}
-.god-assist-to::after{content:"⚡";position:absolute;right:4px;top:3px;font-size:14px;line-height:1;filter:drop-shadow(0 1px 2px #000)}
-/* v11.3 GOD ONLINE — destaque discreto no tabuleiro (stealth) */
+.god-assist-from,.god-assist-to{box-shadow:inset 0 0 0 3px #B8FF00,0 0 8px rgba(184,255,0,.95),0 0 20px rgba(184,255,0,.75),0 0 34px rgba(184,255,0,.45)!important;position:relative;z-index:2}
+.god-assist-from::after{content:"◈";position:absolute;left:4px;top:3px;color:#B8FF00;font-size:12px;line-height:1;text-shadow:0 0 4px #000,0 0 8px #B8FF00;filter:drop-shadow(0 0 3px rgba(184,255,0,.9))}
+.god-assist-to::after{content:"⚡";position:absolute;right:4px;top:3px;color:#B8FF00;font-size:15px;line-height:1;text-shadow:0 0 4px #000,0 0 8px #B8FF00;filter:drop-shadow(0 0 3px rgba(184,255,0,.9))}
+/* v11.5 — indicador GOD neon verde-limão: origem + destino */
 body.god-stealth .god-assist-from,
 body.god-stealth .god-assist-to {
-    box-shadow: inset 0 0 0 2px rgba(250, 204, 21, 0.55) !important;
+    box-shadow: inset 0 0 0 3px #B8FF00, 0 0 8px rgba(184,255,0,.95), 0 0 20px rgba(184,255,0,.75), 0 0 34px rgba(184,255,0,.45) !important;
 }
-body.god-stealth .god-assist-to::after { content: none !important; }
+body.god-stealth .god-assist-from::after {
+    content: "◈" !important;
+}
+body.god-stealth .god-assist-to::after {
+    content: "⚡" !important;
+    position: absolute;
+    right: 4px;
+    top: 3px;
+    font-size: 14px;
+    line-height: 1;
+    filter: drop-shadow(0 1px 2px #000);
+}
 
         /* v11 — barra de movimentos em tempo real + retorno ao atual acessível */
         .move-list-container { overflow-x: auto !important; overflow-y: hidden !important; white-space: nowrap; scroll-behavior: auto !important; }
@@ -2080,6 +2171,8 @@ body.god-stealth .god-assist-to::after { content: none !important; }
     // Guarda um FEN para cada ply, sem alterar a partida ao navegar pelo histórico.
     let moveHistoryFens = [chess.fen()];
     let historyViewPly = null;
+    let moveListUserScrolling = false;
+    let gameOverHandled = false;
 
     function resetMoveHistory() {
         moveHistoryFens = [chess.fen()];
@@ -2087,6 +2180,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
     }
 
     function recordMoveHistoryPosition() {
+        moveListUserScrolling = false;
         const ply = chess.history().length;
         moveHistoryFens = moveHistoryFens.slice(0, ply);
         moveHistoryFens[ply] = chess.fen();
@@ -2124,6 +2218,13 @@ body.god-stealth .god-assist-to::after { content: none !important; }
     function scrollMoveListToEnd(immediate = true){
         const container = document.getElementById('moveListContainer');
         if (!container) return;
+        if (moveListUserScrolling && historyViewPly === null) return;
+        if (!container.dataset.scrollGuardBound) {
+            container.dataset.scrollGuardBound = '1';
+            ['wheel','touchstart','pointerdown'].forEach(function(ev){
+                container.addEventListener(ev, function(){ moveListUserScrolling = true; }, {passive:true});
+            });
+        }
         const doScroll = () => {
             // Atualização em tempo real: vai diretamente para o último lance.
             container.scrollLeft = container.scrollWidth - container.clientWidth;
@@ -2136,7 +2237,8 @@ body.god-stealth .god-assist-to::after { content: none !important; }
 
     let selectedSquare = null;
     let possibleMoves = [];
-    let gameMode = 'menu';
+    const APP_VERSION = '13.0.0';
+        let gameMode = 'menu';
     let aiDifficulty = 5;
     let soundEnabled = true;
     let trailEnabled = true;
@@ -2211,7 +2313,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         { id: 'theme_gm', elo: 1500, type: 'theme', apply: 'grandmaster', icon: '👑', title: 'Tema Grandmaster', desc: 'UI dourada + estilo neon.' },
         { id: 'board_royal', elo: 1500, type: 'board', apply: 'board-royal', icon: '👑', title: 'Tabuleiro Real', desc: 'Dourado e violeta de campeão.' },
         { id: 'cert_champion', elo: 1500, type: 'cert', apply: null, icon: '📜', title: 'Certificado Grande Campeão', desc: 'Baixe seu diploma personalizado.' },
-        { id: 'pieces_gold', elo: 1600, type: 'pieces', apply: 'pieces-gold-purple', icon: '🟡', title: 'Peças Ouro Real', desc: 'Dourado vs roxo profundo.' }
+        { id: 'pieces_gold', elo: 1600, type: 'pieces', apply: 'pieces-gold-purple', icon: '🟡', title: 'Peças Ouro Real', desc: 'Dourado vs roxo profundo.' },
     ];
     // Corrigir ícone esmeralda (texto acidental)
     UNLOCK_CATALOG.forEach(function(u) { if (u.id === 'board_emerald') u.icon = '💚'; });
@@ -2270,7 +2372,11 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         toquio:   { theme: 'toquio',   pieces: 'pieces-cyberpunk',   style: 'style-neon' },
         londres:  { theme: 'londres',  pieces: 'pieces-green-cyan',  style: 'style-classic' },
         arena:    { theme: 'arena',    pieces: 'pieces-monochrome',  style: 'style-classic' },
-        grandmaster: { theme: 'grandmaster', pieces: 'pieces-gold-purple', style: 'style-neon' }
+        grandmaster: { theme: 'grandmaster', pieces: 'pieces-gold-purple', style: 'style-neon' },
+        matrix: { theme: 'matrix', pieces: 'pieces-neon-lime', style: 'style-neon' },
+        cyberpunk: { theme: 'cyberpunk', pieces: 'pieces-cyberpunk', style: 'style-neon' },
+        toxic: { theme: 'toxic', pieces: 'pieces-toxic', style: 'style-contrast' },
+        esmeralda: { theme: 'esmeralda', pieces: 'pieces-green-cyan', style: 'style-classic' }
     };
 
     /**
@@ -2291,7 +2397,11 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         { id: 'sunset-wood', label: 'Pôr do Sol', theme: 'claro', board: 'board-wood', pieces: 'pieces-sunset', style: 'style-classic' },
         { id: 'toxic-contrast', label: 'Tóxico Alto Contraste', theme: 'novayork', board: '', pieces: 'pieces-toxic', style: 'style-contrast' },
         { id: 'ruby-indigo', label: 'Rubi Espacial', theme: 'toquio', board: 'board-marble', pieces: 'pieces-ruby-indigo', style: 'style-neon' },
-        { id: 'gm-royal', label: 'Grandmaster Royal', theme: 'grandmaster', board: 'board-royal', pieces: 'pieces-gold-purple', style: 'style-neon' }
+        { id: 'gm-royal', label: 'Grandmaster Royal', theme: 'grandmaster', board: 'board-royal', pieces: 'pieces-gold-purple', style: 'style-neon' },
+        { id: 'matrix-system', label: 'Matrix System', theme: 'matrix', board: '', pieces: 'pieces-neon-lime', style: 'style-neon' },
+        { id: 'cyber-arena', label: 'Cyber Arena', theme: 'cyberpunk', board: '', pieces: 'pieces-cyberpunk', style: 'style-neon' },
+        { id: 'toxic-zone', label: 'Toxic Zone', theme: 'toxic', board: '', pieces: 'pieces-toxic', style: 'style-contrast' },
+        { id: 'emerald-forest', label: 'Emerald Forest', theme: 'esmeralda', board: '', pieces: 'pieces-green-cyan', style: 'style-classic' }
     ];
     let currentPrivateVisual = null;
     let lastPrivateVisualId = '';
@@ -2377,7 +2487,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
     function refreshUnlocksUI() {
         const gallery = document.getElementById('unlocksGallery');
         if (gallery) {
-            gallery.innerHTML = UNLOCK_CATALOG.map(function(item) {
+            gallery.innerHTML = UNLOCK_CATALOG.filter(function(item) { return !item.secret || godMode; }).map(function(item) {
                 const owned = isUnlockOwned(item);
                 const lockLabel = owned ? (godMode ? '⚡ Desbloqueado pelo Modo GOD' : '✅ Desbloqueado') : ('🔒 Elo ' + item.elo + '+');
                 const btnLabel = item.type === 'cert' ? '📜 Baixar' : 'Aplicar';
@@ -2842,30 +2952,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         // Página em pontos (1pt = 1/72") — escala para caber em A4 paisagem ~842x595
         const pageW = 842;
         const pageH = Math.max(595, Math.round(pageW * imgH / imgW));
-        const objects = [];
-        function addObj(str) {
-            objects.push(str);
-            return objects.length;
-        }
-
-        const imgObj = addObj(
-            '<< /Type /XObject /Subtype /Image /Width ' + imgW +
-            ' /Height ' + imgH +
-            ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' +
-            jpegBytes.length + ' >>\nstream\n'
-        );
-        // stream bytes handled specially below
-        const imgObjNum = imgObj;
-
-        const content = 'q\n' + pageW + ' 0 0 ' + pageH + ' 0 0 cm\n/Im0 Do\nQ\n';
-        const contentObj = addObj('<< /Length ' + content.length + ' >>\nstream\n' + content + 'endstream');
-        const pageObj = addObj(
-            '<< /Type /Page /Parent 3 0 R /MediaBox [0 0 ' + pageW + ' ' + pageH +
-            '] /Contents ' + contentObj + ' 0 R /Resources << /XObject << /Im0 ' + imgObjNum + ' 0 R >> >> >>'
-        );
-        // We'll renumber carefully - better build with fixed structure
-
-        // Rebuild with known numbers for reliability
+        // Estrutura PDF numerada explicitamente para evitar objetos temporários/dead code.
         // 1: catalog, 2: pages, 3: page, 4: content, 5: image
         const enc = new TextEncoder();
         const parts = [];
@@ -3710,7 +3797,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
             const ply = (typeof chess !== 'undefined' && chess) ? chess.history().length : 0;
             const fenShort = (typeof chess !== 'undefined' && chess) ? chess.fen().split(' ').slice(0, 4).join(' ') : '-';
             return {
-                ver: '11.0',
+                ver: APP_VERSION,
                 mode: typeof gameMode !== 'undefined' ? gameMode : '-',
                 turn: (typeof chess !== 'undefined' && chess) ? chess.turn() : '-',
                 ply: ply,
@@ -3723,9 +3810,26 @@ body.god-stealth .god-assist-to::after { content: none !important; }
                 view: (window.innerWidth || 0) + 'x' + (window.innerHeight || 0)
             };
         } catch (e) {
-            return { ver: '11.0', err: String(e && e.message || e) };
+            return { ver: APP_VERSION, err: String(e && e.message || e) };
         }
     }
+
+    // v13.0.2 — diagnóstico centralizado. Não altera regras de jogo; apenas expõe estado seguro para testes.
+    window.xpRuntimeHealth = function(){
+        try {
+            return {
+                version: APP_VERSION,
+                mode: typeof gameMode !== 'undefined' ? gameMode : '-',
+                sandbox: typeof sandboxMode !== 'undefined' ? !!sandboxMode : false,
+                training: !!window.xpTrainingActive,
+                turn: (typeof chess !== 'undefined' && chess) ? chess.turn() : '-',
+                ply: (typeof chess !== 'undefined' && chess) ? chess.history().length : 0,
+                fen: (typeof chess !== 'undefined' && chess) ? chess.fen() : null,
+                aiPending: typeof pendingAICallback === 'function',
+                peer: (typeof conn !== 'undefined' && conn && conn.open) || (typeof peer !== 'undefined' && peer && !peer.destroyed)
+            };
+        } catch(e) { return {version: APP_VERSION, error: String(e && e.message || e)}; }
+    };
 
     function addLog(msg, level = 'INFO', meta = null) {
         const now = new Date();
@@ -4295,7 +4399,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         return 0;
     }
 
-    function toggleVoiceNarr(el) { voiceNarrEnabled = el.checked; }
+    function toggleVoiceNarr(el) { voiceNarrEnabled = !!el.checked; try { saveUserPrefs(); } catch(e) {} }
 
     function playSFX(type = 'move') {
         if (!soundEnabled) return;
@@ -4491,8 +4595,8 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         evt.currentTarget.classList.add('active');
     }
 
-    function toggleSFX(el) { soundEnabled = el.checked; }
-    function toggleTrail(el) { trailEnabled = el.checked; }
+    function toggleSFX(el) { soundEnabled = !!el.checked; try { saveUserPrefs(); } catch(e) {} }
+    function toggleTrail(el) { trailEnabled = !!el.checked; try { saveUserPrefs(); } catch(e) {} }
 
     function updateFightBarDisplay() {
         const total = candiesWhite + candiesBlack;
@@ -4536,6 +4640,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
             if (titleEl && !isSpectator && !currentCityKey) titleEl.innerText = "Xadrez Pro";
         }
         try { localStorage.setItem('xadrezpro_theme', themeName); } catch (e) {}
+        try { saveUserPrefs(); } catch (e) {}
         addLog('Tema UI: ' + prev + ' → ' + themeName, 'UI');
     }
 
@@ -4654,6 +4759,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
 
     function startGame(mode, isRematch = false) {
         forceFullBoardRebuild();
+        gameOverHandled = false;
         if (mode !== 'sandbox') setSandboxEvalVisible(false);
         if (botVsBotInterval) { clearTimeout(botVsBotInterval); botVsBotInterval = null; }
         gameMode = mode;
@@ -4767,6 +4873,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
 
     function resetGame(isRematch = true) {
         forceFullBoardRebuild();
+        gameOverHandled = false;
         chess.reset();
         resetMoveHistory();
         selectedSquare = null;
@@ -4789,12 +4896,35 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         setSandboxEvalVisible(false);
         const ok = await customConfirm("Deseja sair da partida e retornar ao menu?", "Sair da Partida");
         if (!ok) return;
+
+        // Sair de uma partida online ativa equivale a desistir.
+        if (gameMode === 'network' && networkMatchActive && !isSpectator && !gameOverHandled && !chess.game_over()) {
+            const leavingColor = playerColor;
+            const winnerColor = leavingColor === 'w' ? 'b' : 'w';
+            networkAbandonmentHandled = true;
+            try { networkBroadcast({ type: 'resign', color: leavingColor, reason: 'leave-room' }); } catch(e) {}
+            addLog('Jogador saiu da partida e foi registrado como abandono.', 'GAME');
+            handleGameOverEvents((leavingColor === 'w' ? 'Brancas' : 'Pretas') + ' abandonaram a partida.', winnerColor);
+        }
+        clearNetworkDisconnectTimer();
+        networkMatchActive = false;
+        networkAbandonmentHandled = false;
         
         // Invalida imediatamente qualquer callback/time-out P2P da sessão que está sendo encerrada.
         p2pSessionToken++;
         aiRequestId++;
         pendingAICallback = null;
         clearGodAssistance();
+        // Limpa qualquer áudio/voz pendente da sessão encerrada.
+        try {
+            Object.keys(voiceIncoming).forEach(function(k){ delete voiceIncoming[k]; });
+            voicePending = null;
+            if (voiceMaxTimer) { clearTimeout(voiceMaxTimer); voiceMaxTimer = null; }
+            if (voiceStream) { voiceStream.getTracks().forEach(function(t){ try { t.stop(); } catch(e){} }); voiceStream = null; }
+            setVoiceBtnRecording(false);
+            const voicePreview = document.getElementById('voicePreview');
+            if (voicePreview) { voicePreview.style.display = 'none'; voicePreview.innerHTML = ''; }
+        } catch(e) {}
         if (menuTransitionTimer) { clearTimeout(menuTransitionTimer); menuTransitionTimer = null; }
         menuTransitionToken++;
         if (roomStatusRefreshTimer) { clearTimeout(roomStatusRefreshTimer); roomStatusRefreshTimer = null; }
@@ -5376,6 +5506,8 @@ body.god-stealth .god-assist-to::after { content: none !important; }
     }
 
     function handleGameOverEvents(reason, winnerColor = null) {
+        if (gameOverHandled) { addLog('Fim de jogo duplicado ignorado: ' + reason, 'GAME'); return; }
+        gameOverHandled = true;
         if (botVsBotInterval) { clearTimeout(botVsBotInterval); botVsBotInterval = null; }
         stopClock();
         clearGodAssistance(); // v11.3 — limpa destaque GOD no fim
@@ -6322,6 +6454,8 @@ body.god-stealth .god-assist-to::after { content: none !important; }
     }
 
     function bindPieceDrag(pieceEl, squareCoord) {
+        if (pieceEl.dataset.dragBound === '1') return;
+        pieceEl.dataset.dragBound = '1';
         pieceEl.setAttribute('draggable', 'true');
         pieceEl.ondragstart = (e) => {
             if (isSpectator || gameMode === 'bot-vs-bot') { e.preventDefault(); return; }
@@ -6550,6 +6684,21 @@ body.god-stealth .god-assist-to::after { content: none !important; }
 
     function handleSquareClick(square) {
         if (historyViewPly !== null) return;
+        if (window.xpTrainingActive === true && typeof window.__xpTrainingMove === 'function') {
+            if (selectedSquare === null) {
+                const piece = chess.get(square);
+                if (piece && piece.color === chess.turn()) {
+                    selectedSquare = square;
+                    possibleMoves = chess.moves({ square, verbose: true }).map(m => m.to);
+                    renderBoard();
+                }
+            } else {
+                const from = selectedSquare;
+                if (square === from) { selectedSquare=null; possibleMoves=[]; renderBoard(); return; }
+                window.__xpTrainingMove(from, square);
+            }
+            return;
+        }
         if (isSpectator || gameMode === 'bot-vs-bot' || (gameMode === 'network' && chess.turn() !== playerColor) || (gameMode === 'pve' && chess.turn() !== playerColor)) return;
         // sandbox: permite ambos os lados
         if (selectedSquare === null) {
@@ -6699,26 +6848,62 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         if (onDone) onDone();
     }
 
+    // v13.0.1 — status das salas: falha/timeout do broker NÃO significa sala indisponível.
+    // Mantemos o último estado conhecido e usamos "Verificando" durante uma checagem.
+    const roomStatusCache = {
+        paris: 'disponivel',
+        toquio: 'disponivel',
+        novayork: 'disponivel',
+        londres: 'disponivel'
+    };
+
+    function paintRoomStatus(cityKey, status, transient) {
+        const el = document.getElementById(`status-${cityKey}`);
+        if (!el) return;
+        if (status === 'ocupada') {
+            el.innerText = 'Em jogo';
+            el.style.background = '#b91c1c';
+            return;
+        }
+        if (status === 'disponivel') {
+            el.innerText = 'Livre';
+            el.style.background = '#15803d';
+            return;
+        }
+        // "desconhecido" é falha de verificação, não indisponibilidade da sala.
+        if (transient) {
+            el.innerText = 'Verificando…';
+            el.style.background = '#64748b';
+        } else {
+            const last = roomStatusCache[cityKey] || 'disponivel';
+            el.innerText = last === 'ocupada' ? 'Em jogo' : 'Livre';
+            el.style.background = last === 'ocupada' ? '#b91c1c' : '#15803d';
+            el.title = 'Status mantido: o servidor P2P não respondeu à última verificação.';
+        }
+    }
+
     async function checkRoomAvailability(cityKey) {
         return new Promise((resolve) => {
             let settled = false;
+            let timer = null;
+            let testPeer = null;
+            let connTest = null;
             const finish = (status) => {
                 if (settled) return;
                 settled = true;
+                if (timer) clearTimeout(timer);
                 try { if (connTest) connTest.close(); } catch (e) {}
                 try { if (testPeer) testPeer.destroy(); } catch (e) {}
                 resolve(status);
             };
-            let testPeer = null;
-            let connTest = null;
             try {
                 testPeer = new Peer();
             } catch (e) {
-                resolve('disponivel');
+                finish('desconhecido');
                 return;
             }
             const roomId = "xadrezpro-cities-v73-" + cityKey;
-            testPeer.on('error', () => finish('disponivel'));
+            testPeer.on('error', () => finish('desconhecido'));
             testPeer.on('open', () => {
                 try {
                     connTest = testPeer.connect(roomId, { reliable: true, serialization: 'json' });
@@ -6727,17 +6912,16 @@ body.god-stealth .god-assist-to::after { content: none !important; }
                     });
                     connTest.on('data', (data) => {
                         if (data && (data.type === 'probe-response' || data.type === 'slot-response')) {
-                            // ocupada se há host (mesmo sem segundo jogador)
                             finish(data.occupied || data.status === 'full' || data.status === 'accepted' ? 'ocupada' : 'disponivel');
                         }
                     });
-                    connTest.on('error', () => finish('disponivel'));
+                    connTest.on('error', () => finish('desconhecido'));
                 } catch (e) {
-                    finish('disponivel');
+                    finish('desconhecido');
                 }
             });
-            // PeerJS costuma levar 1–3s; 400ms gerava sempre "Livre"
-            setTimeout(() => finish('disponivel'), 2800);
+            // Timeout curto: nunca convertemos timeout em "Indisponível".
+            timer = setTimeout(() => finish('desconhecido'), 3500);
         });
     }
 
@@ -6747,21 +6931,17 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         roomStatusBusy = true;
         try {
             const cities = ['paris', 'toquio', 'novayork', 'londres'];
-            for (let c of cities) {
+            for (const c of cities) {
                 if (gameMode !== 'menu') break;
-            const statusEl = document.getElementById(`status-${c}`);
-            if (statusEl) {
-                statusEl.innerText = '…';
-                statusEl.style.background = '#64748b';
-                let status = await checkRoomAvailability(c);
-                if (status === 'disponivel') {
-                    statusEl.innerText = 'Livre';
-                    statusEl.style.background = '#15803d';
+                paintRoomStatus(c, roomStatusCache[c] || 'disponivel', true);
+                const status = await checkRoomAvailability(c);
+                if (status === 'disponivel' || status === 'ocupada') {
+                    roomStatusCache[c] = status;
+                    paintRoomStatus(c, status, false);
                 } else {
-                    statusEl.innerText = 'Em jogo';
-                    statusEl.style.background = '#b91c1c';
+                    // Preserva o último estado válido; jamais exibe "Indisponível".
+                    paintRoomStatus(c, 'desconhecido', false);
                 }
-            }
             }
         } finally {
             roomStatusBusy = false;
@@ -6962,6 +7142,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
                         // Segundo jogador (oponente)
                         guestConn = c;
                         conn = c;
+                        markNetworkMatchActive();
                         opponentName = data.guestName || 'Oponente';
                         if (data.guestAvatar) opponentAvatar = data.guestAvatar;
                         setupHostListeners(cityName);
@@ -7132,9 +7313,9 @@ body.god-stealth .god-assist-to::after { content: none !important; }
                 }
                 const moveObj = {
                     from: data.move.from,
-                    to: data.move.to,
-                    promotion: data.move.promotion || undefined
+                    to: data.move.to
                 };
+                if (data.move.promotion) moveObj.promotion = data.move.promotion;
                 const result = chess.move(moveObj);
                 if (!result) {
                     if (data.fen) {
@@ -7182,11 +7363,10 @@ body.god-stealth .god-assist-to::after { content: none !important; }
             }
             return;
         }
-        if (data.type === 'resign') { 
+        if (data.type === 'resign') {
             if (data.color !== 'w' && data.color !== 'b') return;
-            const winnerColor = data.color === 'w' ? 'b' : 'w'; 
-            handleGameOverEvents(`${data.color === 'w' ? 'Brancas' : 'Pretas'} desistiram.`, winnerColor); 
-            return; 
+            handleNetworkOpponentResign(data);
+            return;
         }
         if (data.type === 'draw-offer') {
             if (isSpectator) {
@@ -7269,6 +7449,52 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         }
     }
 
+    // v13.0.2 — abandono/desconexao P2P robustos.
+    let networkMatchActive = false;
+    let networkDisconnectTimer = null;
+    let networkAbandonmentHandled = false;
+    const NETWORK_RECONNECT_GRACE_MS = 12000;
+
+    function clearNetworkDisconnectTimer() {
+        if (networkDisconnectTimer) { clearTimeout(networkDisconnectTimer); networkDisconnectTimer = null; }
+    }
+    function markNetworkMatchActive() {
+        networkMatchActive = true;
+        networkAbandonmentHandled = false;
+        clearNetworkDisconnectTimer();
+    }
+    function confirmNetworkAbandonment(reason) {
+        if (gameMode !== 'network' || isSpectator || !networkMatchActive || networkAbandonmentHandled || gameOverHandled) return;
+        networkAbandonmentHandled = true;
+        clearNetworkDisconnectTimer();
+        stopClock();
+        const winnerColor = playerColor === 'w' ? 'w' : 'b';
+        const text = reason || 'Seu adversario abandonou a partida.';
+        addLog('Vitoria por abandono confirmada: ' + text, 'GAME');
+        handleGameOverEvents(text + ' Vitoria por abandono.', winnerColor);
+    }
+    function handleNetworkOpponentDisconnect(source) {
+        if (gameMode !== 'network' || isSpectator || !networkMatchActive || networkAbandonmentHandled || gameOverHandled) return;
+        clearNetworkDisconnectTimer();
+        addChatMessage('Sistema', '🔄 Seu adversario perdeu a conexao. Tentando reconectar por ' + Math.round(NETWORK_RECONNECT_GRACE_MS / 1000) + 's...', true);
+        addLog('Conexao do adversario perdida (' + (source || 'P2P') + '). Aguardando reconexao.', 'P2P_INFO');
+        networkDisconnectTimer = setTimeout(function(){
+            networkDisconnectTimer = null;
+            if (gameMode === 'network' && networkMatchActive && !gameOverHandled && !networkAbandonmentHandled) {
+                confirmNetworkAbandonment('Seu adversario saiu da sala ou perdeu a conexao.');
+            }
+        }, NETWORK_RECONNECT_GRACE_MS);
+    }
+    function handleNetworkOpponentResign(data) {
+        if (gameMode !== 'network' || isSpectator || !networkMatchActive || networkAbandonmentHandled || gameOverHandled) return;
+        clearNetworkDisconnectTimer();
+        const loser = data && (data.color === 'w' || data.color === 'b') ? data.color : (playerColor === 'w' ? 'b' : 'w');
+        const winnerColor = loser === 'w' ? 'b' : 'w';
+        networkAbandonmentHandled = true;
+        addLog('Oponente desistiu explicitamente. Vitoria por abandono.', 'GAME');
+        handleGameOverEvents((loser === 'w' ? 'Brancas' : 'Pretas') + ' desistiram. Vitoria por abandono.', winnerColor);
+    }
+
     function setupHostListeners(cityName) {
         // Host: processa dados do oponente e retransmite para espectadores
         conn.on('data', (data) => {
@@ -7279,12 +7505,13 @@ body.god-stealth .god-assist-to::after { content: none !important; }
                 relayToSpectators(data);
             }
         });
-        conn.on('close', () => { addChatMessage("Sistema", "O oponente saiu.", true); });
+        conn.on('close', () => { handleNetworkOpponentDisconnect('oponente'); });
     }
 
     function setupClientListeners(cityName) {
         conn.on('data', (data) => {
             if (data.type === 'slot-response') {
+                clearNetworkDisconnectTimer();
                 // Visual sincronizado da sala privada (host → guest/espectador)
                 if (data.visualPack) {
                     currentPrivateVisual = data.visualPack;
@@ -7347,6 +7574,7 @@ body.god-stealth .god-assist-to::after { content: none !important; }
                     addChatMessage("Sistema", spectatorWhiteName + " (Brancas) vs " + spectatorBlackName + " (Pretas)", true);
                     if (data.plyCount) addChatMessage("Sistema", "Partida em andamento · " + data.plyCount + " meio-lance(s).", true);
                 } else {
+                    markNetworkMatchActive();
                     playerColor = 'b';
                     isSpectator = false;
                     spectatorWhiteName = '';
@@ -7360,11 +7588,12 @@ body.god-stealth .god-assist-to::after { content: none !important; }
             }
             handleIncomingConnData(data);
         });
-        conn.on('close', () => { addChatMessage("Sistema", "O host saiu.", true); });
+        conn.on('close', () => { handleNetworkOpponentDisconnect('host'); });
     }
 
     function startGameSetup() {
         forceFullBoardRebuild();
+        gameOverHandled = false;
         gameMode = 'network';
         boardFlipped = (playerColor === 'b'); // espectador (playerColor null) vê do lado das brancas
         applyPlayerSeating();
@@ -7513,7 +7742,10 @@ body.god-stealth .god-assist-to::after { content: none !important; }
             const raw = localStorage.getItem('xadrezpro_prefs_v73');
             if (!raw) return;
             const prefs = JSON.parse(raw);
-            if (prefs.theme) { currentTheme = prefs.theme; setTheme(prefs.theme); }
+            if (prefs.theme) {
+                currentTheme = prefs.theme;
+                setTheme(prefs.theme);
+            }
             if (typeof prefs.sound === 'boolean') soundEnabled = prefs.sound;
             if (typeof prefs.trail === 'boolean') trailEnabled = prefs.trail;
             if (typeof prefs.voice === 'boolean') voiceNarrEnabled = prefs.voice;
@@ -7525,18 +7757,11 @@ body.god-stealth .god-assist-to::after { content: none !important; }
             const voice = document.getElementById('voiceNarrToggle'); if (voice) voice.checked = voiceNarrEnabled;
         } catch(e) {}
     }
-    const _origSetTheme = setTheme;
-    setTheme = function(t) { _origSetTheme(t); saveUserPrefs(); };
-    const _origToggleSFX = toggleSFX;
-    toggleSFX = function(el) { _origToggleSFX(el); saveUserPrefs(); };
-    const _origToggleTrail = toggleTrail;
-    toggleTrail = function(el) { _origToggleTrail(el); saveUserPrefs(); };
-    const _origToggleVoice = toggleVoiceNarr;
-    toggleVoiceNarr = function(el) { _origToggleVoice(el); saveUserPrefs(); };
 
     loadUserPrefs();
     // v11.3 — aplica stealth ao carregar se GOD já estava ativo
     if (godMode) document.body.classList.add('god-stealth');
+    try { refreshUnlocksUI(); } catch(e) {}
     updateFightBarDisplay();
     updateTurnIndicators();
     updateCapturedDisplay();
@@ -7741,9 +7966,9 @@ body.god-stealth .god-assist-to::after { content: none !important; }
             practice: true
         },
         {
-            title: '9. Plano de abertura (e Sandbox)',
+            title: '9. Plano de abertura',
             pieces: ['N', 'B', 'K'],
-            html: '<p>1) Centro (e4/d4).<br>2) Desenvolva cavalos e bispos.<br>3) Roque cedo.<br>4) Não mova a mesma peça várias vezes na abertura.</p><div class="tutorial-tip">🧪 No <b>Sandbox</b> você joga os dois lados, desfaz lances e usa “Avaliar” com a IA — o melhor laboratório.</div>',
+            html: '<p>1) Centro (e4/d4).<br>2) Desenvolva cavalos e bispos.<br>3) Roque cedo.<br>4) Não mova a mesma peça várias vezes na abertura.</p><div class="tutorial-tip">🧪 O <b>Sandbox</b> fica reunido nas ferramentas do Tutorial: você joga os dois lados, desfaz lances e pode usar “Avaliar” com a IA.</div>',
             practice: true
         },
         {
@@ -7780,10 +8005,9 @@ body.god-stealth .god-assist-to::after { content: none !important; }
                     return `<div class="tutorial-piece-card"><div class="tp-img" style="background-image:url('${url}')"></div></div>`;
                 }).join('') + '</div>';
             }
-            const practiceBtn = page.practice
-                ? `<button type="button" class="tutorial-practice-btn" onclick="closeTutorial();startSandboxMode();">🧪 Praticar isso no Sandbox</button>`
-                : '';
-            body.innerHTML = `<div class="tutorial-step"><h3>${page.title}</h3>${hero}${page.html}${practiceBtn}</div>`;
+            // O Sandbox fica disponível em um único botão fixo na área "Aprender, praticar e analisar".
+            // Remove o antigo botão azul duplicado que aparecia dentro de algumas páginas do Tutorial.
+            body.innerHTML = `<div class="tutorial-step"><h3>${page.title}</h3>${hero}${page.html}</div>`;
         }
         const pager = document.getElementById('tutorialPager');
         if (pager) pager.textContent = `${tutorialIndex + 1} / ${TUTORIAL_PAGES.length}`;
@@ -7812,11 +8036,337 @@ body.god-stealth .god-assist-to::after { content: none !important; }
         });
     }
 
-    addLog('Xadrez Pro v11 — GOD assistivo, IA responsiva, menu/P2P estáveis e retorno ao menu protegido.', 'INIT');
+    addLog('Xadrez Pro v13.0.1 — status de salas corrigido: Treino/Sandbox/Tutorial/FEN, diagnóstico e compatibilidade.', 'INIT');
     try { refreshUnlocksUI(); renderMissionsUI(); refreshSettingsPreview(); } catch (e) {}
     logSessionSnapshot('boot');
     if (typeof shuffleStandUpDeck === 'function') shuffleStandUpDeck();
     if (typeof bindVoiceButton === 'function') bindVoiceButton();
+
+
+/* v11.6 — IA responsiva: feedback visual sem alterar o worker existente. */
+(function(){
+  let xpAiTimer=null;
+  let xpAiStarted=0;
+  function xpAiShow(text){const el=document.getElementById('xp-ai-progress');if(el){el.textContent=text;el.style.display='block';}}
+  function xpAiHide(){const el=document.getElementById('xp-ai-progress');if(el)el.style.display='none';if(xpAiTimer){clearInterval(xpAiTimer);xpAiTimer=null;}}
+  window.xpStartAiProgress=function(){xpAiStarted=Date.now();xpAiShow('IA pensando…');if(xpAiTimer)clearInterval(xpAiTimer);xpAiTimer=setInterval(function(){const sec=((Date.now()-xpAiStarted)/1000).toFixed(1);xpAiShow('IA pensando… '+sec+'s · calculando');},250);};
+  window.xpStopAiProgress=function(){xpAiHide();};
+  const originalApply=window.applyAIMove;
+  if(typeof originalApply==='function' && !window.__xpApplyWrapped){
+    window.__xpApplyWrapped=true;
+    window.applyAIMove=function(){xpAiHide();return originalApply.apply(this,arguments);};
+  }
+  const originalRequest=window.requestAIMove;
+  if(typeof originalRequest==='function' && !window.__xpRequestWrapped){
+    window.__xpRequestWrapped=true;
+    window.requestAIMove=function(){xpStartAiProgress();return originalRequest.apply(this,arguments);};
+  }
+  setTimeout(function(){
+    try{ if(typeof aiWorker!=='undefined' && aiWorker && !aiWorker.__xpProgressWrapped){
+      const old=aiWorker.onmessage;
+      if(old){ aiWorker.onmessage=function(ev){xpAiHide();return old.call(this,ev);} }
+      aiWorker.__xpProgressWrapped=true;
+    }}catch(e){}
+  },0);
+})();
+
+
+
+/* v11.7 — revisão pós-partida baseada no histórico local já existente. */
+(function(){
+ window.xpOpenReview=function(){
+  const modal=document.getElementById('xp-review-modal'), body=document.getElementById('xp-review-body'); if(!modal||!body)return;
+  let hist=[]; try{hist=chess.history({verbose:true})||[]}catch(e){}
+  const sans=hist.map(m=>m.san||''); const captures=hist.filter(m=>m.captured).length; const checks=hist.filter(m=>String(m.san||'').includes('+')||String(m.san||'').includes('#')).length;
+  let summary='Partida sem lances registrados.'; try{summary=typeof buildPostGameSummary==='function'?buildPostGameSummary(null,'Revisão manual'):summary;}catch(e){}
+  body.innerHTML='<div class="xp-review-grid"><div class="xp-review-stat"><b>Lances</b><br>'+hist.length+'</div><div class="xp-review-stat"><b>Capturas</b><br>'+captures+'</div><div class="xp-review-stat"><b>Xeques</b><br>'+checks+'</div></div><div class="xp-review-stat"><b>Resumo</b><br>'+summary+'</div><h3>Histórico</h3><div class="xp-review-moves">'+(sans.length?sans.map((m,i)=>'<span class="xp-review-move">'+(i+1)+'. '+escapeHtml(String(m))+'</span>').join(''):'<span>Nenhum lance.</span>')+'</div>';
+  modal.style.display='flex';
+ };
+ window.xpCloseReview=function(){const m=document.getElementById('xp-review-modal');if(m)m.style.display='none';};
+ window.xpCopyGameData=function(){let fen='';try{fen=chess.fen()}catch(e){} let pgn='';try{pgn=chess.pgn()}catch(e){} const text='FEN: '+fen+'\n\nPGN:\n'+pgn; if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(text).then(()=>{try{addLog('FEN/PGN copiado.','REVIEW')}catch(e){}}); else window.prompt('Copie os dados:',text);};
+ window.addEventListener('keydown',e=>{if(e.key==='Escape')xpCloseReview();});
+ setTimeout(function(){
+   try{const original=window.handleGameOverEvents;if(typeof original==='function'&&!window.__xpReviewGameOver){window.__xpReviewGameOver=true;window.handleGameOverEvents=function(){const r=original.apply(this,arguments);setTimeout(function(){const old=document.getElementById('xp-review-open-btn');if(!old){const b=document.createElement('button');b.id='xp-review-open-btn';b.type='button';b.textContent='🔎 Revisar partida';b.onclick=xpOpenReview;b.style.cssText='position:fixed;right:12px;bottom:12px;z-index:9998;padding:9px 12px;border-radius:10px;border:1px solid var(--board-border);background:var(--btn-bg);color:var(--text-main);font-weight:700';document.body.appendChild(b);}},80);return r;};}}catch(e){}
+ },100);
+})();
+
+
+
+/* v11.8 — estatísticas locais e compartilhamento FEN/PGN. */
+(function(){
+ const key='xadrezpro_final_stats_v118';
+ function get(){try{return JSON.parse(localStorage.getItem(key)||'{"games":0,"wins":0,"losses":0,"draws":0,"moves":0}')}catch(e){return {games:0,wins:0,losses:0,draws:0,moves:0}}}
+ function save(x){try{localStorage.setItem(key,JSON.stringify(x))}catch(e){} render(x)}
+ function render(x){const b=document.getElementById('xp-stats-badge');if(b)b.textContent='📊 '+x.games+' partidas · '+x.wins+' vitórias';}
+ window.xpGetStats=get; render(get());
+ window.xpShareFEN=function(){let f='';try{f=chess.fen()}catch(e){} const t='Xadrez Pro — FEN\n'+f;navigator.clipboard?.writeText(t).then(()=>alert('FEN copiado.'))};
+ window.xpSharePGN=function(){let p='';try{p=chess.pgn()}catch(e){}navigator.clipboard?.writeText(p).then(()=>alert('PGN copiado.'))};
+ setTimeout(function(){try{const original=window.handleGameOverEvents;if(typeof original==='function'&&!window.__xpStatsWrapped){window.__xpStatsWrapped=true;window.handleGameOverEvents=function(reason,winner){const r=original.apply(this,arguments);try{const x=get();x.games++;x.moves+=chess.history().length;if(winner==='w' || winner==='b'){if((winner==='w'&&typeof playerColor!=='undefined'&&playerColor==='w')||(winner==='b'&&typeof playerColor!=='undefined'&&playerColor==='b'))x.wins++;else x.losses++;}else x.draws++;save(x)}catch(e){}return r;};}}catch(e){}},120);
+})();
+
+
+
+/* v12.6 — Treino integrado ao Sandbox: revisão de estado, restauração segura e sem remoção de recursos. */
+(function(){
+  const puzzles=[
+    {name:'Controle do centro',fen:'r1bqkbnr/pppp1ppp/2n5/8/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2',from:'d7',to:'d5',hint:'Controle o centro com …d5.'},
+    {name:'Ganho de espaço',fen:'rnbqkb1r/pp1ppppp/5n2/2p5/4P3/2N2N2/PPPP1PPP/R1BQKB1R w KQkq - 2 4',from:'e4',to:'e5',hint:'Avance o peão central para ganhar espaço.'},
+    {name:'Desenvolvimento',fen:'r1bqkbnr/pppp1ppp/2n5/8/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2',from:'g8',to:'f6',hint:'Desenvolva o cavalo para uma casa natural.'}
+  ];
+  let idx=0;
+  let trainingActive=false;
+  let trainingSnapshot=null;
+  let solved=false;
+  let attempts=0;
+  let solvedCount=0;
+  // Estado público: handleSquareClick vive fora deste IIFE e não pode acessar trainingActive diretamente.
+  window.xpTrainingActive=false;
+
+  function hud(){return document.getElementById('xp-train-hud');}
+  function status(text){const el=document.getElementById('xp-train-hud-status');if(el)el.textContent=text;}
+  function showHud(on){const el=hud();if(el)el.style.display=on?'block':'none';}
+  function updateTrainingButtons(){
+    const next=document.getElementById('xp-train-next');
+    if(next) next.disabled=!solved;
+    const evalBtn=document.getElementById('xp-train-eval');
+    if(evalBtn) evalBtn.disabled=!solved;
+  }
+  function loadPuzzle(){
+    try{
+      const p=puzzles[idx];
+      chess.load(p.fen);
+      selectedSquare=null; possibleMoves=[]; lastPathCoords=[]; wasInCheckLastMove=false;
+      historyViewPly=null; solved=false; attempts=0;
+      if(typeof moveHistoryFens!=='undefined') moveHistoryFens=[chess.fen()];
+      if(typeof lastSyncedFen!=='undefined') lastSyncedFen=chess.fen();
+      const turnName=chess.turn()==='w'?'Brancas':'Pretas';
+      status('🧩 '+p.name+' · Desafio '+(idx+1)+'/'+puzzles.length+' · vez das '+turnName+' — encontre o melhor lance.');
+      updateTrainingButtons();
+      renderBoard(); updateTurnIndicators(); updateCapturedDisplay();
+      if(typeof updateMoveListPanel==='function')updateMoveListPanel();
+    }catch(e){ status('Não foi possível carregar este desafio.'); }
+  }
+
+  window.xpOpenTraining=function(){
+    if(trainingActive || window.xpTrainingActive === true)return;
+    try{
+      const evalBtn=document.getElementById('btnSandboxEval');
+      trainingSnapshot={
+        chess: chess, gameMode: gameMode, sandboxMode: sandboxMode, playerColor: playerColor,
+        isSpectator: isSpectator, boardFlipped: boardFlipped, selectedSquare:selectedSquare,
+        possibleMoves: possibleMoves.slice(), historyViewPly: historyViewPly,
+        moveHistoryFens: (typeof moveHistoryFens!=='undefined' && Array.isArray(moveHistoryFens)) ? moveHistoryFens.slice() : null,
+        lastPathCoords: Array.isArray(lastPathCoords)?lastPathCoords.slice():[],
+        wasInCheckLastMove: !!wasInCheckLastMove,
+        lastSyncedFen: (typeof lastSyncedFen!=='undefined'?lastSyncedFen:null),
+        gameOverHandled: !!gameOverHandled,
+        clockWhite: (typeof clockWhite!=='undefined'?clockWhite:0),
+        clockBlack: (typeof clockBlack!=='undefined'?clockBlack:0),
+        timeControlSeconds: (typeof timeControlSeconds!=='undefined'?timeControlSeconds:0),
+        clockWasRunning: !!clockInterval,
+        sandboxEvalVisible: !!(evalBtn && evalBtn.classList.contains('visible')),
+        godAssistBestMove: (typeof godAssistBestMove!=='undefined'?godAssistBestMove:null)
+      };
+      trainingActive=true;
+      window.xpTrainingActive=true;
+      // O Treino é uma experiência dentro do mesmo tabuleiro do Sandbox.
+      // Ao entrar, a tela/menu principal é fechado imediatamente e o tabuleiro fica visível.
+      gameMode='sandbox'; sandboxMode=true; isSpectator=false;
+      selectedSquare=null; possibleMoves=[]; historyViewPly=null;
+      if(typeof closeMenuTransition==='function')closeMenuTransition();
+      if(typeof stopClock==='function')stopClock();
+      if(typeof aiRequestId!=='undefined')aiRequestId++;
+      if(typeof pendingAICallback!=='undefined')pendingAICallback=null;
+      if(typeof godAssistBestMove!=='undefined')godAssistBestMove=null;
+      chess=new Chess(puzzles[idx].fen);
+      closeTutorial();
+      const trainHud= hud();
+      const sidePanel=document.getElementById('sidePanel');
+      if(trainHud && sidePanel && trainHud.parentElement!==sidePanel) sidePanel.insertBefore(trainHud,sidePanel.children[1]||null);
+      showHud(true);
+      setSandboxEvalVisible(false);
+      loadPuzzle();
+      addLog('Centro de Treino iniciado no tabuleiro do Sandbox','TRAINING');
+    }catch(e){
+      trainingActive=false; window.xpTrainingActive=false; trainingSnapshot=null;
+      status('Erro ao iniciar o treino.'); showHud(false);
+      try{renderBoard();}catch(err){}
+    }
+  };
+
+  window.xpNextPuzzle=function(){
+    if(!trainingActive || !solved)return;
+    idx=(idx+1)%puzzles.length;
+    loadPuzzle();
+  };
+
+  window.xpHintPuzzle=function(){
+    if(!trainingActive)return;
+    const p=puzzles[idx];
+    status('💡 '+p.hint);
+  };
+
+  window.xpEvaluateTraining=function(){
+    if(!trainingActive)return;
+    if(!solved){status('Resolva o desafio antes de pedir a avaliação da IA.');return;}
+    try{
+      if(typeof evaluateSandboxPosition==='function'){
+        status('🔎 IA analisando a posição resolvida…');
+        evaluateSandboxPosition();
+      }else status('Avaliação da IA indisponível nesta sessão.');
+    }catch(e){status('Não foi possível avaliar esta posição.');}
+  };
+
+  window.xpCloseTraining=function(){
+    if(!trainingActive){ window.xpTrainingActive=false; showHud(false); return; }
+    const snap=trainingSnapshot;
+    try{
+      const cameFromMenu = !!(snap && snap.gameMode === 'menu');
+      if(snap){
+        chess=snap.chess;
+        gameMode=snap.gameMode;
+        sandboxMode=snap.sandboxMode;
+        playerColor=snap.playerColor;
+        isSpectator=snap.isSpectator;
+        boardFlipped=snap.boardFlipped;
+        selectedSquare=snap.selectedSquare;
+        possibleMoves=snap.possibleMoves||[];
+        historyViewPly=snap.historyViewPly;
+        lastPathCoords=snap.lastPathCoords||[];
+        wasInCheckLastMove=!!snap.wasInCheckLastMove;
+        if(typeof moveHistoryFens!=='undefined' && snap.moveHistoryFens) moveHistoryFens=snap.moveHistoryFens.slice();
+        if(typeof lastSyncedFen!=='undefined') lastSyncedFen=snap.lastSyncedFen;
+        gameOverHandled=!!snap.gameOverHandled;
+        if(typeof clockWhite!=='undefined')clockWhite=snap.clockWhite;
+        if(typeof clockBlack!=='undefined')clockBlack=snap.clockBlack;
+        if(typeof timeControlSeconds!=='undefined')timeControlSeconds=snap.timeControlSeconds;
+        if(typeof godAssistBestMove!=='undefined')godAssistBestMove=snap.godAssistBestMove||null;
+      }
+      // Se o Treino foi aberto a partir do menu/tutorial, nunca devolvemos o usuário
+      // ao menu. O destino é sempre o tabuleiro principal em modo Sandbox.
+      if(cameFromMenu){
+        gameMode='sandbox';
+        sandboxMode=true;
+        playerColor='w';
+        isSpectator=false;
+        if(typeof closeMenuTransition==='function') closeMenuTransition();
+      }
+      selectedSquare=null; possibleMoves=[];
+      trainingActive=false; window.xpTrainingActive=false; trainingSnapshot=null; solved=false; attempts=0;
+      if(typeof stopClock==='function')stopClock();
+      showHud(false);
+      setSandboxEvalVisible(cameFromMenu ? true : !!(snap && snap.sandboxEvalVisible));
+      renderBoard(); updateTurnIndicators(); updateCapturedDisplay(); detectOpening();
+      if(typeof updateMoveListPanel==='function')updateMoveListPanel();
+      if(typeof updateClockDisplay==='function')updateClockDisplay();
+      if(snap && snap.clockWasRunning && typeof startClock==='function')startClock();
+      addLog('Centro de Treino encerrado; estado da partida restaurado','TRAINING');
+    }catch(e){
+      trainingActive=false; window.xpTrainingActive=false; trainingSnapshot=null; showHud(false);
+      try{renderBoard();updateMoveListPanel();}catch(err){}
+    }
+  };
+  window.xpExitTraining=window.xpCloseTraining;
+
+  window.startSandboxFromTutorial=function(){
+    try{
+      if(window.xpTrainingActive && typeof window.xpCloseTraining==='function') window.xpCloseTraining();
+      closeTutorial();
+      startSandboxMode();
+    }catch(e){try{startSandboxMode();}catch(err){}}
+  };
+
+  window.xpImportFEN=function(){
+    const f=prompt('Cole um FEN para analisar:');
+    if(!f)return;
+    try{
+      const test=new Chess(f.trim());
+      if(!test || typeof test.fen!=='function') throw new Error('FEN inválido');
+
+      // FEN é uma ferramenta de análise: sai de qualquer modo anterior
+      // (PvE/Bot-vs-Bot/Treino/Network) sem apagar a posição importada.
+      if(window.xpTrainingActive && typeof window.xpCloseTraining==='function'){
+        window.xpCloseTraining();
+      }
+      if(typeof botVsBotInterval!=='undefined' && botVsBotInterval){
+        clearTimeout(botVsBotInterval);
+        botVsBotInterval=null;
+      }
+      if(typeof aiRequestId!=='undefined') aiRequestId++;
+      if(typeof pendingAICallback!=='undefined') pendingAICallback=null;
+      if(typeof stopClock==='function') stopClock();
+      if(typeof godAssistBestMove!=='undefined') godAssistBestMove=null;
+      if(typeof gameOverHandled!=='undefined') gameOverHandled=false;
+
+      chess=new Chess(test.fen());
+      gameMode='sandbox';
+      sandboxMode=true;
+      playerColor='w';
+      isSpectator=false;
+      selectedSquare=null;
+      possibleMoves=[];
+      lastPathCoords=[];
+      wasInCheckLastMove=false;
+      historyViewPly=null;
+
+      if(typeof resetMoveHistory==='function') resetMoveHistory();
+      if(typeof closeMenuTransition==='function') closeMenuTransition();
+      if(typeof applyPlayerSeating==='function') applyPlayerSeating();
+      if(typeof updateTurnIndicators==='function') updateTurnIndicators();
+      if(typeof updateCapturedDisplay==='function') updateCapturedDisplay();
+      if(typeof renderBoard==='function') renderBoard();
+      if(typeof detectOpening==='function') detectOpening();
+      if(typeof updateMoveListPanel==='function') updateMoveListPanel();
+      if(typeof setSandboxEvalVisible==='function') setSandboxEvalVisible(true);
+      closeTutorial();
+      addLog('FEN carregado no Sandbox para análise livre','FEN');
+      alert('FEN carregado com sucesso no Sandbox.');
+    }catch(e){
+      console.warn('[FEN] Falha ao carregar FEN:',e);
+      alert('FEN inválido. Verifique as 6 partes da posição e tente novamente.');
+    }
+  };
+
+  window.__xpTrainingMove=function(from,to){
+    if(!trainingActive)return false;
+    try{
+      const expected=puzzles[idx];
+      const legal=chess.moves({square:from,verbose:true}).find(m=>m.to===to);
+      if(!legal){selectedSquare=null;possibleMoves=[];renderBoard();status('⚠️ Lance ilegal. Tente novamente.');return true;}
+      attempts++;
+      const move=chess.move({from,to,promotion:legal.promotion||'q'});
+      if(!move){selectedSquare=null;possibleMoves=[];renderBoard();status('⚠️ Não foi possível executar o lance.');return true;}
+      selectedSquare=null;possibleMoves=[];
+      if(move.from===expected.from&&move.to===expected.to){
+        solved=true; solvedCount++;
+        status('✅ Excelente! '+expected.name+' resolvido. Tentativas: '+attempts+'. Use “Próximo” ou “Avaliar IA”.');
+        try{playSFX('move');}catch(e){}
+        addLog('Desafio resolvido: '+expected.name+' ('+attempts+' tentativa(s))','TRAINING');
+      }else{
+        chess.undo();
+        status('❌ Não é o lance esperado. '+expected.hint+' · Tentativas: '+attempts);
+      }
+      updateTrainingButtons();
+      renderBoard();
+      if(typeof updateTurnIndicators==='function')updateTurnIndicators();
+      return true;
+    }catch(e){selectedSquare=null;possibleMoves=[];renderBoard();status('⚠️ Erro ao processar o lance.');return true;}
+  };
+
+  window.xpGetTrainingState=function(){return {active:trainingActive,puzzle:idx+1,total:puzzles.length,solved:solved,solvedCount:solvedCount,attempts:attempts};};
+})();
+
 </script>
+
+<div id="xp-train-hud" class="xp-train-hud" role="dialog" aria-live="polite" aria-label="Centro de Treino">
+  <div id="xp-train-hud-status" class="xp-train-hud-status">🧩 Centro de Treino</div>
+  <div class="xp-train-hud-actions">
+    <button type="button" class="action-btn" onclick="xpHintPuzzle()">💡 Dica</button>
+    <button type="button" id="xp-train-next" class="action-btn" onclick="xpNextPuzzle()" disabled>➡️ Próximo</button>
+    <button type="button" id="xp-train-eval" class="action-btn" onclick="xpEvaluateTraining()" disabled>🔎 Avaliar IA</button>
+    <button type="button" class="action-btn" onclick="xpCloseTraining()">↩️ Voltar à partida</button>
+  </div>
+</div>
+
 </body>
 </html>
