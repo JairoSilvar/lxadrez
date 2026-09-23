@@ -1,11 +1,19 @@
 {
-  "name": "Xadrez Pro",
-  "short_name": "Xadrez Pro",
-  "description": "Xadrez Pro v14.0.1 — xadrez P2P, IA offline e rádio em tempo real",
-  "start_url": "/",
-  "scope": "/",
+  "name": "Xadrez Pro 3D v8",
+  "short_name": "Xadrez v8",
+  "description": "Xadrez Pro 3D v8 — IA, salas e modelos 3D selecionáveis",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#111111",
-  "theme_color": "#111111"
+  "background_color": "#01040c",
+  "theme_color": "#01040c",
+  "icons": [
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/4/42/Chess_klt45.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
 }
