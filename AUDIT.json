@@ -1,31 +1,34 @@
 {
-  "version": "14.0.0",
-  "basis": "v13.0.10",
-  "target": "Git + Vercel",
-  "staticAudit": {
-    "duplicateIds": [],
-    "oldVersionStrings": 0,
-    "localLauncherReferences": false,
-    "inlineJavaScriptSyntax": "OK (node --check)",
-    "apiJavaScriptSyntax": "OK (node --check)",
-    "idsPreservedFromV13_0_10": true,
-    "namedFunctionsPreservedFromV13_0_10": true
-  },
-  "changesVerified": [
-    "CMD/local server removed",
-    "Vercel-only room messaging",
-    "no hidden dynamic PeerID fallback",
-    "appGeneration added to AI stale-result guard",
-    "Tester stress 50/100/500",
-    "functional probes with real UI moves",
-    "PvE AI response wait",
-    "Bot-vs-Bot real move wait",
-    "global stress invariants"
+  "version": "15.0.0",
+  "date": "2026-09-22",
+  "baseline": "JairoSilvar/termux-xadrez main b0439ad358efb7e2e2d897e48a0e198e81e6a98c",
+  "inlineScriptsSyntaxChecked": 3,
+  "addedScriptsSyntax": "OK",
+  "duplicateIds": [],
+  "visualChecks": [
+    "Home e configurações em desktop e celular",
+    "Partida local e lance e2-e4",
+    "Rádio: busca, seleção e habilitação de Tocar",
+    "Diagnóstico ampliado e acionamento do download TXT",
+    "Desktop 1480x829: tabuleiro e painel com 825 px; chat usa toda a altura livre e termina junto ao card local",
+    "Largura intermediária 1024 px: painel sem exceder a página",
+    "Celular 392x735: tabuleiro 384x384, painel sem rolagem externa, chat com 140 px e card local totalmente visível",
+    "Celular curto 360x640: tabuleiro 353x353 e painel completo até o card local",
+    "Seis botões superiores com largura e altura iguais, incluindo a engrenagem",
+    "Botão único de frases e stand-up dentro da linha de mensagem; menu completo verificado",
+    "Menus móveis de opções, reações e frases com botão X funcional e sem deslocar os cards",
+    "Painel de reações elevado; botão X não cruza a primeira linha de emojis",
+    "Os cinco níveis da IA cabem integralmente em 392 px, inclusive Mestre 5",
+    "Botão DEV reduzido e oculto enquanto opções ou painéis flutuantes estão abertos",
+    "Compartilhar usa texto no compartilhamento nativo e possui fallback para copiar ou baixar",
+    "Engrenagem móvel: desistir e propor empate visíveis sem corte",
+    "Painel móvel de reações: 18 emojis sobre fundo branco opaco",
+    "Prévia de áudio configurada como sobreposição absoluta, sem ocupar espaço no fluxo"
   ],
-  "runtimeLimitations": [
-    "Real PeerJS multi-device requires deployed HTTPS and 2 devices",
-    "Upstash registry requires Vercel environment variables",
-    "Microphone/radio autoplay require browser permission/user gesture",
-    "Third-device spectator remains a physical-device test"
+  "limitations": [
+    "P2P real, registro de salas e espectador não testados nesta rodada; servidor local usou resposta vazia para /api/rooms",
+    "A captura real de microfone não ficou disponível no navegador local; posição flutuante da prévia foi verificada pela folha de estilo",
+    "Compartilhamento nativo em aparelho físico e reprodução de todas as rádios não testados",
+    "Não foi repetido o stress de 500 ciclos nesta rodada visual"
   ]
 }
